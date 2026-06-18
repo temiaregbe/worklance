@@ -48,6 +48,7 @@ const DISCONNECTED_WALLET_KEY = "worklance_wallet_disconnected";
 const EXPECTED_CHAIN_ID = 11155111n;
 const EXPECTED_NETWORK_NAME = "Sepolia";
 const EXPECTED_CHAIN_HEX = "0xaa36a7";
+const PLATFORM_REFRESH_INTERVAL_MS = 2500;
 
 function App() {
   const location = useLocation();
@@ -148,13 +149,42 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const refreshTimer = window.setInterval(() => {
+      void refreshPlatformData({ silent: true });
+    }, PLATFORM_REFRESH_INTERVAL_MS);
+
+    function handleWindowFocus() {
+      void refreshPlatformData({ silent: true });
+    }
+
+    function handleVisibilityChange() {
+      if (!document.hidden) {
+        void refreshPlatformData({ silent: true });
+      }
+    }
+
+    window.addEventListener("focus", handleWindowFocus);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      window.clearInterval(refreshTimer);
+      window.removeEventListener("focus", handleWindowFocus);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
+
+  useEffect(() => {
     setIsSettingsOpen(false);
   }, [location.pathname]);
 
-  async function refreshPlatformData() {
+  async function refreshPlatformData(options = {}) {
+    const { silent = false } = options;
+
     try {
       setCurrentUser(getCurrentUser());
-      await syncLocalUsersToBackend().catch(() => null);
+      if (!silent) {
+        await syncLocalUsersToBackend().catch(() => null);
+      }
       const [nextJobs, nextMessages, nextTransactions] = await Promise.all([
         listJobs(),
         listMessages(),
@@ -164,7 +194,9 @@ function App() {
       setMessages(nextMessages);
       setTransactions(nextTransactions);
     } catch (error) {
-      setStatus(getErrorMessage(error));
+      if (!silent) {
+        setStatus(getErrorMessage(error));
+      }
     }
   }
 
