@@ -27,24 +27,20 @@ export function AuthPanel({
   const [authError, setAuthError] = useState("");
 
   useEffect(() => {
-    if (currentUser) {
-      setForm({
-        name: currentUser.name || "",
-        username: currentUser.username || "",
-        email: currentUser.email || "",
-        role: currentUser.role || "client",
-        skills: currentUser.skills || "",
-        workHistory: currentUser.workHistory || "",
-        bio: currentUser.bio || ""
-      });
-      setCvStatus(currentUser.cvFileName || "");
+    setAuthError("");
+
+    if (mode === "signup") {
+      setForm(emptyForm);
+      setCvFile(null);
+      setCvStatus("");
+      return;
     }
 
-    setSignInForm((current) => ({
-      username: currentUser?.username || current.username || "",
-      wallet: current.wallet || ""
-    }));
-  }, [currentUser]);
+    setSignInForm({
+      username: "",
+      wallet: account || ""
+    });
+  }, [mode]);
 
   useEffect(() => {
     if (!account) {
@@ -113,11 +109,13 @@ export function AuthPanel({
         </div>
 
         {mode === "signup" ? (
-          <form className="auth-form-stack" onSubmit={handleRegister}>
+          <form className="auth-form-stack" onSubmit={handleRegister} autoComplete="off">
             <label>
               Full Name
               <input
                 type="text"
+                name="worklance-signup-full-name"
+                autoComplete="off"
                 value={form.name}
                 onChange={(event) => setForm({ ...form, name: event.target.value })}
                 required
@@ -127,6 +125,8 @@ export function AuthPanel({
               Username
               <input
                 type="text"
+                name="worklance-signup-username"
+                autoComplete="off"
                 value={form.username}
                 onChange={(event) => setForm({ ...form, username: event.target.value })}
                 placeholder="Choose a unique username"
@@ -137,6 +137,8 @@ export function AuthPanel({
               Email
               <input
                 type="email"
+                name="worklance-signup-email"
+                autoComplete="off"
                 value={form.email}
                 onChange={(event) => setForm({ ...form, email: event.target.value })}
                 placeholder="name@example.com"
@@ -162,6 +164,8 @@ export function AuthPanel({
               Skills
               <input
                 type="text"
+                name="worklance-signup-skills"
+                autoComplete="off"
                 value={form.skills}
                 onChange={(event) => setForm({ ...form, skills: event.target.value })}
                 placeholder="Solidity, UI design, technical writing..."
@@ -200,6 +204,8 @@ export function AuthPanel({
                 </button>
                 <input
                   type="text"
+                  name="worklance-connected-wallet"
+                  autoComplete="off"
                   value={account || ""}
                   placeholder="No wallet connected yet"
                   readOnly
@@ -210,11 +216,13 @@ export function AuthPanel({
             {status ? <p className="helper-copy auth-status-copy">{status}</p> : null}
           </form>
         ) : (
-          <form className="auth-signin-shell" onSubmit={handleSignIn}>
+          <form className="auth-signin-shell" onSubmit={handleSignIn} autoComplete="off">
             <label>
               Username
               <input
                 type="text"
+                name="worklance-login-username"
+                autoComplete="off"
                 value={signInForm.username}
                 onChange={(event) => setSignInForm({ ...signInForm, username: event.target.value })}
                 placeholder="Enter your username"
@@ -225,6 +233,8 @@ export function AuthPanel({
               Wallet Address
               <input
                 type="text"
+                name="worklance-login-wallet"
+                autoComplete="off"
                 value={signInForm.wallet}
                 onChange={(event) => setSignInForm({ ...signInForm, wallet: event.target.value })}
                 placeholder="0x..."

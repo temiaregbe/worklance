@@ -23,15 +23,6 @@ export async function connectWallet() {
   }
 
   if (ethereum.request) {
-    try {
-      await ethereum.request({
-        method: "wallet_requestPermissions",
-        params: [{ eth_accounts: {} }]
-      });
-    } catch {
-      // Fall back to the standard account request flow.
-    }
-
     await ethereum.request({
       method: "eth_requestAccounts"
     });
