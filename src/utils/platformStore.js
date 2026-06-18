@@ -19,6 +19,19 @@ function writeJson(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
 }
 
+function readSessionJson(key, fallback) {
+  try {
+    const raw = sessionStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function writeSessionJson(key, value) {
+  sessionStorage.setItem(key, JSON.stringify(value));
+}
+
 function isNetworkFailure(error) {
   const message = String(error?.message || "").toLowerCase();
   return (
@@ -119,10 +132,11 @@ function createProfileId() {
 }
 
 export function getCurrentUser() {
-  return readJson(CURRENT_USER_KEY, null);
+  return readSessionJson(CURRENT_USER_KEY, null);
 }
 
 export function logoutUser() {
+  sessionStorage.removeItem(CURRENT_USER_KEY);
   localStorage.removeItem(CURRENT_USER_KEY);
 }
 
@@ -157,7 +171,7 @@ export async function registerUser(profile) {
     }
   );
 
-  writeJson(CURRENT_USER_KEY, user);
+  writeSessionJson(CURRENT_USER_KEY, user);
   return user;
 }
 
@@ -195,7 +209,7 @@ export async function loginUser(wallet, username) {
     }
   );
 
-  writeJson(CURRENT_USER_KEY, user);
+  writeSessionJson(CURRENT_USER_KEY, user);
   return user;
 }
 
@@ -235,7 +249,7 @@ export async function saveProfile(identifier, updates) {
     }
   );
 
-  writeJson(CURRENT_USER_KEY, user);
+  writeSessionJson(CURRENT_USER_KEY, user);
   return user;
 }
 
