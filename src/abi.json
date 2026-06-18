@@ -1,0 +1,15 @@
+[
+  "function createJob(uint256 _jobId, string _description, uint256 _paymentAmount) external",
+  "function assignFreelancer(uint256 _jobId, address _freelancer) external",
+  "function depositPayment(uint256 _jobId) external payable",
+  "function submitWork(uint256 _jobId, string _submission) external",
+  "function approveWork(uint256 _jobId) external",
+  "function rejectWork(uint256 _jobId) external",
+  "function cancelJob(uint256 _jobId) external",
+  "function getJob(uint256 _jobId) external view returns ((uint256 jobId, string description, uint256 paymentAmount, address client, address freelancer, string workSubmission, uint8 state, bool exists))",
+  "event JobCreated(uint256 indexed jobId, address indexed client, string description, uint256 paymentAmount)",
+  "event FreelancerAssigned(uint256 indexed jobId, address indexed freelancer)",
+  "event PaymentDeposited(uint256 indexed jobId, uint256 amount)",
+  "event WorkSubmitted(uint256 indexed jobId, address indexed freelancer, string submission)",
+  "event PaymentReleased(uint256 indexed jobId, address indexed freelancer, uint256 amount)"
+]

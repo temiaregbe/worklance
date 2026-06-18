@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:o="urn:schemas-microsoft-com:office:office"
+            xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+            xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"
+            xmlns:v="urn:schemas-microsoft-com:vml"
+            xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing"
+            xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"
+            xmlns:w10="urn:schemas-microsoft-com:office:word"
+            xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+            xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml"
+            xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup"
+            xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk"
+            xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml"
+            xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape"
+            mc:Ignorable="w14 wp14">
+  <w:body>
+    <w:p><w:pPr><w:pStyle w:val="Title"/></w:pPr><w:r><w:t>WorkLance Workflow Guide</w:t></w:r></w:p>
+    <w:p><w:r><w:t>This brief guide explains how a client and freelancer use the WorkLance platform from account creation to payment approval.</w:t></w:r></w:p>
+
+    <w:p><w:pPr><w:pStyle w:val="Heading1"/></w:pPr><w:r><w:t>Client Workflow</w:t></w:r></w:p>
+    <w:p><w:r><w:t>1. Sign up as a client using MetaMask, full name, username, and profile details.</w:t></w:r></w:p>
+    <w:p><w:r><w:t>2. Open the client dashboard and create a job listing with title, description, deadline, and payment amount.</w:t></w:r></w:p>
+    <w:p><w:r><w:t>3. Review proposals submitted by freelancers for the posted job.</w:t></w:r></w:p>
+    <w:p><w:r><w:t>4. Select a preferred freelancer and assign that freelancer to the job.</w:t></w:r></w:p>
+    <w:p><w:r><w:t>5. Fund the escrow for the assigned job.</w:t></w:r></w:p>
+    <w:p><w:r><w:t>6. Review the submitted work, then approve payment if the work is satisfactory.</w:t></w:r></w:p>
+
+    <w:p><w:pPr><w:pStyle w:val="Heading1"/></w:pPr><w:r><w:t>Freelancer Workflow</w:t></w:r></w:p>
+    <w:p><w:r><w:t>1. Sign up as a freelancer using MetaMask, full name, username, and profile details.</w:t></w:r></w:p>
+    <w:p><w:r><w:t>2. Browse available jobs and open a relevant listing.</w:t></w:r></w:p>
+    <w:p><w:r><w:t>3. Submit a proposal with bid amount, timeline, portfolio, and CV where required.</w:t></w:r></w:p>
+    <w:p><w:r><w:t>4. After being selected by the client, move to the delivery stage.</w:t></w:r></w:p>
+    <w:p><w:r><w:t>5. Submit work using project links, uploaded files, or delivery notes.</w:t></w:r></w:p>
+
+    <w:p><w:pPr><w:pStyle w:val="Heading1"/></w:pPr><w:r><w:t>Messaging and Collaboration</w:t></w:r></w:p>
+    <w:p><w:r><w:t>The messaging section allows the client and freelancer to communicate during the project. They can discuss requirements, updates, and delivery expectations before final approval.</w:t></w:r></w:p>
+
+    <w:p><w:pPr><w:pStyle w:val="Heading1"/></w:pPr><w:r><w:t>End Result</w:t></w:r></w:p>
+    <w:p><w:r><w:t>The intended workflow is: client posts a job, freelancer submits a proposal, client selects and assigns a freelancer, freelancer delivers work, and client approves payment.</w:t></w:r></w:p>
+
+    <w:sectPr>
+      <w:pgSz w:w="12240" w:h="15840"/>
+      <w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440" w:header="708" w:footer="708" w:gutter="0"/>
+    </w:sectPr>
+  </w:body>
+</w:document>
